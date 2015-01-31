@@ -26,29 +26,28 @@ public class Percolation {
        return grid[row][col];  
     };
     
-    public int findNeighbours(int row,int col){
-       int count = 0 ;
+    private void mergeWithNeighBours(int row,int col){;
+       int selfId = findId(row,col);
        if (row-1>=0 && isOpen(row-1,col)) { 
-           count++; 
-          //wqf grid[i-1][j];
+           int topNeighbourId = findId(row-1,col);
+           union(selfId,topNeighbourId);
        };
        if (col+1<size && isOpen(row,col+1)) {
-           count++; 
-           //wqf grid[i][j+1];
+           int rightNeighbourId = findId(row,col+1);
+           union(selfId,rightNeighbourId);
        };
        if (row+1<size && isOpen(row+1,col)) { 
-           count++; 
-          //wqf grid[i+1][j];
+           int bottomNeighbourId = findId(row+1,col);
+           union(selfId,bottomNeighbourId);
        };
        if (col-1>=0 && isOpen(row,col-1)) { 
-           count++; 
-           //wqf grid[i][j-1];
-       };
-       return count;     
+           int leftNeighbourId = findId(row,col-1);
+           union(selfId,leftNeighbourId);
+       };    
     };
     
     public int findId(int row, int col) {
-        return size-1 * row + col; 
+        return (size-1)* row + col; 
     };
     
     public int findRootOfGrid(int row, int col) {
