@@ -19,10 +19,19 @@ public class PercolationTest{
     }
     
     @Test
-    public void gridOpensWhenCalled() {
+    public void squareOpensWhenCalled() {
         percolation.open(0,0);
         
         assertTrue(percolation.isOpen(0,0));
         assertFalse(percolation.isOpen(1,1));
+    }
+    
+    @Test
+    public void squareShouldKnowThyNeighbours() {
+        //intermediary test method to test finding neighbours, will be removed as i go along
+        int actualNumberOfNeighbours = percolation.findNeighbours(0,0);
+        int expectedNumberOfNeighbours = 2;
+        
+        assertEquals(expectedNumberOfNeighbours,actualNumberOfNeighbours);
     }
 }

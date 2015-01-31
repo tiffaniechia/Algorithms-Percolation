@@ -1,8 +1,10 @@
 public class Percolation {
     private boolean[][] grid;
+    private int size;
     
     public Percolation(int N){
        grid = new boolean[N][N];
+       size = N;
     };
     
     public boolean[][] grid(){
@@ -17,6 +19,27 @@ public class Percolation {
        return grid[i][j];  
     };
     
+    public int findNeighbours(int i,int j){
+       int count = 0 ;
+       if (i-1>=0) { 
+           count++; 
+          //wqf grid[i-1][j];
+       };
+       if (j+1<size) {
+           count++; 
+           //wqf grid[i][j+1];
+       };
+       if (i+1<size) { 
+           count++; 
+          //wqf grid[i+1][j];
+       };
+       if (j-1>=0) { 
+           count++; 
+           //wqf grid[i][j-1];
+       };
+       return count;     
+    }
+       
 //    public boolean isFull(int i, int j){};
 //    public boolean percolates(){};
 
