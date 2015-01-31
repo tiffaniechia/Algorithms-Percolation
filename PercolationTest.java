@@ -57,10 +57,11 @@ public class PercolationTest{
     @Test 
     public void unionShouldChangeRootiToRootJ() {
         percolation.union(0,1);
-        int actualRootOfi = percolation.roots(0);
-        int expectedRootOfi = 1;
+        int actualRootOfi = percolation.roots(1);
+        int expectedRootOfi = 0;
         
         assertEquals(expectedRootOfi, actualRootOfi);
     }
+    
 
 }

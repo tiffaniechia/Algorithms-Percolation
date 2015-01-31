@@ -57,7 +57,7 @@ public class Percolation {
     };
     
     public void union(int idi, int idj) {
-        roots[idi] = idj;    
+        roots[idj] = roots[idi];    
     }
          
 //    public boolean isFull(int i, int j){};
