@@ -57,7 +57,16 @@ public class Percolation {
     };
     
     public void union(int idi, int idj) {
-        roots[idj] = roots[idi];    
+        roots[findRoot(idj)] = roots[findRoot(idi)];    
+    }
+    
+    public int findRoot(int id) {
+        int idRoot = roots[id];
+        while ( idRoot != id ) {
+            id = roots[id];
+            idRoot = roots[roots[idRoot]];   
+        };
+        return idRoot;  
     }
          
 //    public boolean isFull(int i, int j){};

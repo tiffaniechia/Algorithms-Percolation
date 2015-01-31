@@ -63,5 +63,21 @@ public class PercolationTest{
         assertEquals(expectedRootOfi, actualRootOfi);
     }
     
-
+    @Test
+    public void shouldOnlyChangeRootOf() {
+        bigPercolation.union(4,5);
+        bigPercolation.union(2,1);
+        bigPercolation.union(5,1);
+        
+        int actualRootOf2 = bigPercolation.roots(2);
+        int expectedRootOf2 = 4;
+        int actualRootOf1 = bigPercolation.roots(1);
+        int expectedRootOf1 = 2;
+        int actualRootOf5 = bigPercolation.roots(5);
+        int expectedRootOf5 = 4;
+        
+        assertEquals(expectedRootOf2, actualRootOf2);
+        assertEquals(expectedRootOf1, actualRootOf1);
+        assertEquals(expectedRootOf5, actualRootOf5);
+    }
 }
