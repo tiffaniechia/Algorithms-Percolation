@@ -37,21 +37,27 @@ public class PercolationTest{
     }
     
     @Test
-    public void shouldknowIdOfSqaure() {
-       int actualId = percolation.findId(1,1);
-       int expectedId = 2;
+    public void shouldknowIdOfSquare() {
+        int actualId = percolation.findId(1,1);
+        int expectedId = 2;
        
-       assertEquals(expectedId, actualId);
+        assertEquals(expectedId, actualId);
     }
     
     @Test
     public void idShouldKnowItsRoot() {
-      int actualId = percolation.findRootOfGrid(1,1);
-      int expectedId = 2;
+        int actualId = percolation.findRootOfGrid(1,1);
+        int expectedId = 2;
        
-      assertEquals(expectedId, actualId);
+        assertEquals(expectedId, actualId);
     }
     
     @Test 
-    public void unionShouldChangeRootiToRootJ(){}
+    public void unionShouldChangeRootiToRootJ() {
+        percolation.union(0,1);
+        int actualRootOfi = percolation.roots(0);
+        int expectedRootOfi = 1;
+        
+        assertEquals(expectedRootOfi, actualRootOfi);
+    }
 }

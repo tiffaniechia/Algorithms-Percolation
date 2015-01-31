@@ -1,7 +1,7 @@
 public class Percolation {
     private boolean[][] grid;
     private int size;
-    private int[] roots; 
+    public int[] roots; 
     
     public Percolation(int N){
        grid = new boolean[N][N];
@@ -51,6 +51,14 @@ public class Percolation {
         int id = findId(i, j);
         return roots[id];  
     };
+    
+    public void union(int idi, int idj) {
+        roots[idi] = idj;    
+    }
+    
+    public int roots(int id) {
+        return roots[id];    
+    }
          
 //    public boolean isFull(int i, int j){};
 //    public boolean percolates(){};
