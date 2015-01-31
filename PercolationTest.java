@@ -44,4 +44,14 @@ public class PercolationTest{
        assertEquals(expectedId, actualId);
     }
     
+    @Test
+    public void idShouldKnowItsRoot() {
+      int actualId = percolation.findRootOfGrid(1,1);
+      int expectedId = 2;
+       
+      assertEquals(expectedId, actualId);
+    }
+    
+    @Test 
+    public void unionShouldChangeRootiToRootJ(){}
 }

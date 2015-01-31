@@ -1,10 +1,13 @@
 public class Percolation {
     private boolean[][] grid;
     private int size;
+    private int[] roots; 
     
     public Percolation(int N){
        grid = new boolean[N][N];
        size = N;
+       roots = new int[N*N];
+       for (int i=0;i<N*N;i++){roots[i]=i;};
     };
     
     public boolean[][] grid(){
@@ -38,13 +41,17 @@ public class Percolation {
            //wqf grid[i][j-1];
        };
        return count;     
-    }
+    };
     
     public int findId(int i, int j) {
         return size-1 * i + j; 
-    }
+    };
     
-       
+    public int findRootOfGrid(int i, int j) {
+        int id = findId(i, j);
+        return roots[id];  
+    };
+         
 //    public boolean isFull(int i, int j){};
 //    public boolean percolates(){};
 
