@@ -50,11 +50,6 @@ public class Percolation {
         return (size-1)* row + col; 
     };
     
-    public int findRootOfGrid(int row, int col) {
-        int id = findId(row, col);
-        return roots[id];  
-    };
-    
     public void union(int idi, int idj) {
        if(sizeOfForest(idi) >= sizeOfForest(idj)) {
             roots[findRoot(idj)] = roots[findRoot(idi)];
