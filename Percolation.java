@@ -39,6 +39,11 @@ public class Percolation {
        };
        return count;     
     }
+    
+    public int findId(int i, int j) {
+        return size-1 * i + j; 
+    }
+    
        
 //    public boolean isFull(int i, int j){};
 //    public boolean percolates(){};

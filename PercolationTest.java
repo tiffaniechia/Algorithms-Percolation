@@ -35,4 +35,13 @@ public class PercolationTest{
         
         assertEquals(expectedNumberOfNeighbours,actualNumberOfNeighbours);
     }
+    
+    @Test
+    public void shouldknowIdOfSqaure() {
+       int actualId = percolation.findId(1,1);
+       int expectedId = 2;
+       
+       assertEquals(expectedId, actualId);
+    }
+    
 }
