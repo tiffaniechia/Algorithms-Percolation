@@ -21,19 +21,19 @@ public class Percolation {
     
     public int findNeighbours(int i,int j){
        int count = 0 ;
-       if (i-1>=0) { 
+       if (i-1>=0 && isOpen(i-1,j)) { 
            count++; 
           //wqf grid[i-1][j];
        };
-       if (j+1<size) {
+       if (j+1<size && isOpen(i,j+1)) {
            count++; 
            //wqf grid[i][j+1];
        };
-       if (i+1<size) { 
+       if (i+1<size && isOpen(i+1,j)) { 
            count++; 
           //wqf grid[i+1][j];
        };
-       if (j-1>=0) { 
+       if (j-1>=0 && isOpen(i,j-1)) { 
            count++; 
            //wqf grid[i][j-1];
        };

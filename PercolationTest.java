@@ -27,10 +27,10 @@ public class PercolationTest{
     }
     
     @Test
-    public void squareShouldKnowThyNeighbours() {
-        //intermediary test method to test finding neighbours, will be removed as i go along
+    public void shouldOnlyRecognizeOpenNeighbours() {
+        percolation.open(0,1);
         int actualNumberOfNeighbours = percolation.findNeighbours(0,0);
-        int expectedNumberOfNeighbours = 2;
+        int expectedNumberOfNeighbours = 1;
         
         assertEquals(expectedNumberOfNeighbours,actualNumberOfNeighbours);
     }
