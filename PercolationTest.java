@@ -80,4 +80,20 @@ public class PercolationTest{
         assertEquals(expectedRootOf1, actualRootOf1);
         assertEquals(expectedRootOf5, actualRootOf5);
     }
+    
+    @Test
+    public void directionOfUnionShouldBeWeighted() {
+        bigPercolation.union(4,5);
+        bigPercolation.union(2,1);
+        bigPercolation.union(5,1);
+        bigPercolation.union(3,5);
+        
+        int actualRootOf3 = bigPercolation.roots(3);
+        int expectedRootOf3 = 4;
+        int actualRootOf4 = bigPercolation.roots(4);
+        int expectedRootOf4 = 4;
+        
+        assertEquals(expectedRootOf3, actualRootOf3);
+        assertEquals(expectedRootOf4, actualRootOf4);
+    }
 }
