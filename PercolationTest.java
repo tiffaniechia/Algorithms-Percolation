@@ -1,18 +1,25 @@
-import junit.framework.TestCase;
+import org.junit.Before;
+import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class PercolationTest extends TestCase {
+public class PercolationTest{
+    Percolation percolation;
     
-    public void testPercolationInitializesWithNByNGrid() {
-        Percolation percolation = new Percolation(2);
+    @Before
+    public void setUp() {
+        percolation = new Percolation(2);    
+    }
+    
+    @Test
+    public void ensurePercolationInitializesWithNByNGrid() {
         boolean[][] actualIndex = percolation.grid();
         boolean[][] expectedIndex = new boolean[2][2];
         
         assertArrayEquals(expectedIndex, actualIndex);    
     }
     
-    public void testOpeningGrid() {
-        Percolation percolation = new Percolation(2);
+    @Test
+    public void gridOpensWhenCalled() {
         percolation.open(0,0);
         
         assertTrue(percolation.isOpen(0,0));
