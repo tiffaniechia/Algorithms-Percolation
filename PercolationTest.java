@@ -28,6 +28,7 @@ public class PercolationTest{
     
     @Test
     public void shouldOnlyRecognizeOpenNeighbours() {
+        //count as an intermediary test method to curate logic
         percolation.open(0,1);
         int actualNumberOfNeighbours = percolation.findNeighbours(0,0);
         int expectedNumberOfNeighbours = 1;
