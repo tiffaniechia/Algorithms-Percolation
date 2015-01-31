@@ -4,10 +4,12 @@ import static org.junit.Assert.*;
 
 public class PercolationTest{
     Percolation percolation;
+    Percolation bigPercolation;
     
     @Before
     public void setUp() {
-        percolation = new Percolation(2);    
+        percolation = new Percolation(2);
+        bigPercolation = new Percolation(4);
     }
     
     @Test
@@ -60,4 +62,5 @@ public class PercolationTest{
         
         assertEquals(expectedRootOfi, actualRootOfi);
     }
+
 }

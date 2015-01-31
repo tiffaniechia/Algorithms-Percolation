@@ -14,50 +14,50 @@ public class Percolation {
       return grid;  
     }
     
-    public void open(int i, int j){
-       grid[i][j] = true;        
+    public int roots(int id) {
+        return roots[id];    
+    }
+    
+    public void open(int row, int col){
+       grid[row][col] = true;        
     };
     
-    public boolean isOpen(int i, int j){
-       return grid[i][j];  
+    public boolean isOpen(int row, int col){
+       return grid[row][col];  
     };
     
-    public int findNeighbours(int i,int j){
+    public int findNeighbours(int row,int col){
        int count = 0 ;
-       if (i-1>=0 && isOpen(i-1,j)) { 
+       if (row-1>=0 && isOpen(row-1,col)) { 
            count++; 
           //wqf grid[i-1][j];
        };
-       if (j+1<size && isOpen(i,j+1)) {
+       if (col+1<size && isOpen(row,col+1)) {
            count++; 
            //wqf grid[i][j+1];
        };
-       if (i+1<size && isOpen(i+1,j)) { 
+       if (row+1<size && isOpen(row+1,col)) { 
            count++; 
           //wqf grid[i+1][j];
        };
-       if (j-1>=0 && isOpen(i,j-1)) { 
+       if (col-1>=0 && isOpen(row,col-1)) { 
            count++; 
            //wqf grid[i][j-1];
        };
        return count;     
     };
     
-    public int findId(int i, int j) {
-        return size-1 * i + j; 
+    public int findId(int row, int col) {
+        return size-1 * row + col; 
     };
     
-    public int findRootOfGrid(int i, int j) {
-        int id = findId(i, j);
+    public int findRootOfGrid(int row, int col) {
+        int id = findId(row, col);
         return roots[id];  
     };
     
     public void union(int idi, int idj) {
         roots[idi] = idj;    
-    }
-    
-    public int roots(int id) {
-        return roots[id];    
     }
          
 //    public boolean isFull(int i, int j){};
