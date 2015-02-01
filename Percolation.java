@@ -51,11 +51,6 @@ public class Percolation {
         return (size-1)* row + col; 
     };
     
-    public int findRootOfGrid(int row, int col) {
-        int id = findId(row, col);
-        return roots[id];  
-    };
-    
     public void union(int idi, int idj) {
        if(forestSize(idi) >= forestSize(idj)) {
             roots[findRoot(idj)] = roots[findRoot(idi)];
@@ -71,56 +66,12 @@ public class Percolation {
             idRoot = roots[roots[idRoot]];
         };
         return idRoot;  
-    }
-    
-    private int sizeOfForest(int id) {
-        int nodes = 1;
-        int idRoot = roots[id];
-        while ( idRoot != id ) {
-            id = roots[id];
-            idRoot = roots[roots[idRoot]];
-            nodes++;
-        };
-        
-        return nodes;
-        //needs to take into account from tip
-        //needs to take into account other branches
-    }
+    }  
     
     private boolean isRoot(int id) {
         return roots[roots[id]] == id;
     }
-    
-    private boolean isLastChild(int id) {
-        Boolean isLast = false;
-        for(int i = 0; i < size*size; i++) {
-            if( (roots[i] == id) && (i != id)) { 
-                isLast = false;
-                break;
-            } 
-        }
-        return isLast;
-    }   
-         
-    private int findLastChildOfForest(int id) {
-        while ( !isLastChild(id) ) { 
-            for (int i = 0; i < size*size; i++) {
-                id = i;                
-            }    
-        }
-        return id;
-    }
-    
-    private boolean isParentOfABranch(int id) {
-        int count = 0;
-        for (int i = 0; i < size*size; i++) {
-            if(roots[i] == id && !isRoot(id)) {
-                count++;
-            }                    
-        }
-        return count > 1;
-    }
-    
+ 
     public int forestSize(int id) {
         int counter=0;
         int root = findRoot(id);
@@ -136,7 +87,4 @@ public class Percolation {
     
 //    public boolean percolates(){};
 
-    public static void main(String[] args){
-    
-    };
 }
