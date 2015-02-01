@@ -19,14 +19,15 @@ public class Percolation {
     }
     
     public void open(int row, int col){
-       grid[row][col] = true;        
+       grid[row][col] = true;
+       loveThyNeighbours(row,col);
     };
     
     public boolean isOpen(int row, int col){
        return grid[row][col];  
     };
     
-    private void mergeWithNeighBours(int row,int col){;
+    private void loveThyNeighbours(int row,int col){;
        int selfId = findId(row,col);
        if (row-1>=0 && isOpen(row-1,col)) { 
            int topNeighbourId = findId(row-1,col);
@@ -50,6 +51,11 @@ public class Percolation {
         return (size-1)* row + col; 
     };
     
+    public int findRootOfGrid(int row, int col) {
+        int id = findId(row, col);
+        return roots[id];  
+    };
+    
     public void union(int idi, int idj) {
        if(sizeOfForest(idi) >= sizeOfForest(idj)) {
             roots[findRoot(idj)] = roots[findRoot(idi)];
@@ -58,7 +64,7 @@ public class Percolation {
         }    
     }
     
-    public int findRoot(int id) {
+    private int findRoot(int id) {
         int idRoot = roots[id];
         while ( idRoot != id ) {
             id = roots[id];
@@ -67,7 +73,7 @@ public class Percolation {
         return idRoot;  
     }
     
-    public int sizeOfForest(int id) {
+    private int sizeOfForest(int id) {
         int nodes = 1;
         int idRoot = roots[id];
         while ( idRoot != id ) {
@@ -75,10 +81,50 @@ public class Percolation {
             idRoot = roots[roots[idRoot]];
             nodes++;
         };
-        return nodes;        
+        
+        return nodes;
+        //needs to take into account from tip
+        //needs to take into account other branches
     }
+    
+    private boolean isRoot(int id) {
+        return roots[roots[id]] == id;
+    }
+    
+    private boolean isLastChild(int id) {
+        Boolean isLast = false;
+        for(int i = 0; i < size*size; i++) {
+            if( (roots[i] == id) && (i != id)) { 
+                isLast = false;
+                break;
+            } 
+        }
+        return isLast;
+    }   
+         
+    private int findLastChildOfForest(int id) {
+        while ( !isLastChild(id) ) { 
+            for (int i = 0; i < size*size; i++) {
+                id = i;                
+            }    
+        }
+        return id;
+    }
+    
+    private boolean isParentOfABranch(int id) {
+        int count = 0;
+        for (int i = 0; i < size*size; i++) {
+            if(roots[i] == id && !isRoot(id)) {
+                count++;
+            }                    
+        }
+        return count > 1;
+    }
+    
+    
          
 //    public boolean isFull(int i, int j){};
+    
 //    public boolean percolates(){};
 
     public static void main(String[] args){
