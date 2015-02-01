@@ -1,14 +1,14 @@
 #Percolation - Weighted Quick-Union Algorithm
 
-#####This is an assignment from the Algorithms Part 1 course taught by [Kevin Wayne](https://www.coursera.org/instructor/~204) and [Robert Sedgewick](https://www.coursera.org/instructor/~211). [Click here to view the course.](https://www.coursera.org/course/algs4partI) 
+#####This is an assignment from the Algorithms Part 1 course taught by [Kevin Wayne](https://www.coursera.org/instructor/~204) and [Robert Sedgewick](https://www.coursera.org/instructor/~211). [Click here to view the course.](https://www.coursera.org/course/algs4partI)
 
-I have decided (because I'm masochistic) to try writing the algorithm from scratch and not use the given class. 
+I have decided (because I'm delightfully masochistic) to try writing the algorithm from scratch and not use the given class.
 
 ###Requirements:
 - Has to be written in Java.
 - Has to implement the weighted quick-union algorithm
 - Has to be submitted in single files percolation & percolation stats (no OOP).
-- Submission may not call any library functions other than those in java.lang, stdlib.jar, and WeightedQuickUnionUF (from given jar).
+- Submission may not call any library functions other than those in java.lang, stdlib.jar, and WeightedQuickUnionUF (from given jar). [More here.](http://algs4.cs.princeton.edu/code/index.php#stdlib)
 - Must use the given API, no removing any of it (stated below).
 - Must adhere to performance requirements and include corner cases exception handling (stated below in the problem section)
 
@@ -58,4 +58,40 @@ public class PercolationStats {
 }
 ```
 The constructor should throw a java.lang.IllegalArgumentException if either N ≤ 0 or T ≤ 0.
+
 Also, include a main() method that takes two command-line arguments N and T, performs T independent computational experiments (discussed above) on an N-by-N grid, and prints out the mean, standard deviation, and the 95% confidence interval for the percolation threshold. Use standard random from our standard libraries to generate random numbers; use standard statistics to compute the sample mean and standard deviation.
+
+Example:
+```java
+% java PercolationStats 200 100
+mean                    = 0.5929934999999997
+stddev                  = 0.00876990421552567
+95% confidence interval = 0.5912745987737567, 0.5947124012262428
+
+% java PercolationStats 200 100
+mean                    = 0.592877
+stddev                  = 0.009990523717073799
+95% confidence interval = 0.5909188573514536, 0.5948351426485464
+
+
+% java PercolationStats 2 10000
+mean                    = 0.666925
+stddev                  = 0.11776536521033558
+95% confidence interval = 0.6646167988418774, 0.6692332011581226
+
+% java PercolationStats 2 100000
+mean                    = 0.6669475
+stddev                  = 0.11775205263262094
+95% confidence interval = 0.666217665216461, 0.6676773347835391
+```
+
+#####Extra checklist information found:
+How do I throw a java.lang.IndexOutOfBoundsException? Use a throw statement like the following:
+
+ if (i <= 0 || i > N) throw new IndexOutOfBoundsException("row index i out of bounds");
+
+Your code should not attempt to catch any exceptions—this will interfere with our grading scripts.
+
+#####Links:
+- [Assignment](http://coursera.cs.princeton.edu/algs4/assignments/percolation.html)
+- [Assignment Checklist](http://coursera.cs.princeton.edu/algs4/checklists/percolation.html)
