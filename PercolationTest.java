@@ -100,4 +100,13 @@ public class PercolationTest{
        assertFalse(percolation.isFull(1,0));
        assertFalse(percolation.isFull(1,1));
    }
+   
+   @Test 
+   public void shouldKnowIfItPercolates() {
+       percolation.union(0,2);
+       bigPercolation.union(0,1);
+       
+       assertTrue(percolation.percolates());
+       assertFalse(bigPercolation.percolates());
+   }
 }

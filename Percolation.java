@@ -2,12 +2,14 @@ public class Percolation {
     private boolean[][] grid;
     private int size;
     private int[] roots;
+    private boolean percolates;
     
     public Percolation(int N){
        grid = new boolean[N][N];
        size = N;
        roots = new int[N*N];
        for (int i=0;i<N*N;i++){roots[i]=i;};
+       percolates = false;
     };
     
     public boolean[][] grid(){
@@ -48,7 +50,7 @@ public class Percolation {
     };
     
     public int findId(int row, int col) {
-        return (size) * row + col; 
+        return size * row + col; 
     };
     
     public void union(int idi, int idj) {
@@ -83,7 +85,21 @@ public class Percolation {
         int id = findId(row,col);
         return forestSize(id) > 1;
     };
-    
-//    public boolean percolates(){};
+       
+    public boolean percolates() {
+        int topRowId;
+        int bottomRowId;
+        for(int i=0; i<size; i++) {
+            topRowId = findId(0,i);
+            for(int j=0; j<size ; j++) {
+                bottomRowId = findId(size-1,j);
+                if(findRoot(topRowId) == findRoot(bottomRowId)) {
+                    percolates = true;
+                    break;
+                }
+            }
+        }
+        return percolates;
+    };
 
 }
