@@ -109,4 +109,5 @@ public class PercolationTest{
        assertTrue(percolation.percolates());
        assertFalse(bigPercolation.percolates());
    }
+   
 }
