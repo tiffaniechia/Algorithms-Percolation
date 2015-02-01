@@ -31,7 +31,7 @@ public class PercolationTest{
     @Test
     public void shouldknowIdOfSquare() {
         int actualId = percolation.findId(1,1);
-        int expectedId = 2;
+        int expectedId = 3;
        
         assertEquals(expectedId, actualId);
     }
@@ -88,7 +88,16 @@ public class PercolationTest{
        int actualSizeOfForestBelongingToNode7 = bigPercolation.forestSize(7);
        int expectedSizeOfForestBelongingToNode7 = 4;
        
-       assertEquals(expectedSizeOfForestBelongingToNode7,actualSizeOfForestBelongingToNode7);
+       assertEquals(expectedSizeOfForestBelongingToNode7,actualSizeOfForestBelongingToNode7);    
+   }
+   
+   @Test
+   public void shouldKnowIfItIsConnected() {
+       percolation.union(0,1);
        
+       assertTrue(percolation.isFull(0,0));
+       assertTrue(percolation.isFull(0,1));       
+       assertFalse(percolation.isFull(1,0));
+       assertFalse(percolation.isFull(1,1));
    }
 }

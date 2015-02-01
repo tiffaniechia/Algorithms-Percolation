@@ -48,7 +48,7 @@ public class Percolation {
     };
     
     public int findId(int row, int col) {
-        return (size-1)* row + col; 
+        return (size) * row + col; 
     };
     
     public void union(int idi, int idj) {
@@ -83,7 +83,10 @@ public class Percolation {
         return counter;
     }
          
-//    public boolean isFull(int i, int j){};
+    public boolean isFull(int row, int col) {
+        int id = findId(row,col);
+        return forestSize(id) > 1;
+    };
     
 //    public boolean percolates(){};
 
