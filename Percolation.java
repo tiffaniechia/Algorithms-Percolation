@@ -67,10 +67,6 @@ public class Percolation {
         };
         return idRoot;  
     }  
-    
-    private boolean isRoot(int id) {
-        return roots[roots[id]] == id;
-    }
  
     public int forestSize(int id) {
         int counter=0;
