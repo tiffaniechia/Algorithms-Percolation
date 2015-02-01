@@ -2,6 +2,8 @@
 
 #####This is an assignment from the Algorithms Part 1 course taught by [Kevin Wayne](https://www.coursera.org/instructor/~204) and [Robert Sedgewick](https://www.coursera.org/instructor/~211). [Click here to view the course.](https://www.coursera.org/course/algs4partI) 
 
+I have decided (because I'm masochistic) to try writing the algorithm from scratch and not use the given class. 
+
 ###Requirements:
 - Has to be written in Java.
 - Has to implement the weighted quick-union algorithm
