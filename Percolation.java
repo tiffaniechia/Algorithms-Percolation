@@ -57,7 +57,7 @@ public class Percolation {
     };
     
     public void union(int idi, int idj) {
-       if(sizeOfForest(idi) >= sizeOfForest(idj)) {
+       if(forestSize(idi) >= forestSize(idj)) {
             roots[findRoot(idj)] = roots[findRoot(idi)];
         } else {
            roots[findRoot(idi)] = roots[findRoot(idj)];
@@ -121,7 +121,16 @@ public class Percolation {
         return count > 1;
     }
     
-    
+    public int forestSize(int id) {
+        int counter=0;
+        int root = findRoot(id);
+        for(int i=0;i<size*size;i++) {
+            if(findRoot(i) == root) {
+                counter++;
+            }    
+        }
+        return counter;
+    }
          
 //    public boolean isFull(int i, int j){};
     

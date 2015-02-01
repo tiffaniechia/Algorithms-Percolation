@@ -87,5 +87,16 @@ public class PercolationTest{
         assertEquals(expectedRootOf4, actualRootOf4);
     }
     
-   
+   @Test
+   public void findSizeOfEntireForestBasedOnOneNode() {
+       bigPercolation.union(7,8);
+       bigPercolation.union(4,6);
+       bigPercolation.union(4,7);
+       
+       int actualSizeOfForestBelongingToNode7 = bigPercolation.forestSize(7);
+       int expectedSizeOfForestBelongingToNode7 = 4;
+       
+       assertEquals(expectedSizeOfForestBelongingToNode7,actualSizeOfForestBelongingToNode7);
+       
+   }
 }
