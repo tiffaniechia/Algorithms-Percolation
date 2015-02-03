@@ -1,5 +1,13 @@
 public class PercolationStats {
-//   public PercolationStats(int N, int T)     
+    public int runCount;
+    
+    public PercolationStats(int N, int T) {
+        runCount = T;    
+    };
+    
+    public int runCount() {
+         return runCount;
+    }
 //   public double mean()                     
 //   public double stddev()                    
 //   public double confidenceLo()              
