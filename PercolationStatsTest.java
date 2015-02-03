@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 public class PercolationStatsTest {
     PercolationStats percolationStats;
-    Percolation percolation;
     
     @Before
     public void setUp() {
@@ -18,5 +17,7 @@ public class PercolationStatsTest {
  
         assertEquals(expectedRuns, actualRuns); 
     }
+    
+    
 
 }
