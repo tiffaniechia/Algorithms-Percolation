@@ -1,13 +1,28 @@
+import java.util.Random;
+
 public class PercolationStats {
-    public int runCount;
+    Random rand = new Random();
+    Percolation percolation;
+    public int runCount = 0;
+    public int randomRow;
+    public int randomCol;
     
     public PercolationStats(int N, int T) {
-        runCount = T;    
+        percolation = new Percolation(N); 
+
+        while(!percolation.percolates() && runCount < T) {
+            randomRow = rand.nextInt(N);
+            randomCol = rand.nextInt(N);
+            percolation.open(randomRow,randomCol);
+            runCount++; 
+        }
+        
     };
     
     public int runCount() {
          return runCount;
     }
+    
 //   public double mean()                     
 //   public double stddev()                    
 //   public double confidenceLo()              

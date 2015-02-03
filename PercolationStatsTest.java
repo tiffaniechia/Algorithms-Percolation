@@ -3,14 +3,20 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class PercolationStatsTest {
+    PercolationStats percolationStats;
+    Percolation percolation;
     
-    @Test
-    public void shouldRunTNumberOfTimes() {
-    PercolationStats percolationStats = new PercolationStats(10,10);
-    int actualRuns = percolationStats.runCount();
-    int expectedRuns = 10;
-    
-    assertEquals(expectedRuns, actualRuns);
+    @Before
+    public void setUp() {
+        percolationStats = new PercolationStats(10,4);    
     }
     
+    @Test
+    public void shouldRunOnlyUntilPercolates() {
+        int actualRuns = percolationStats.runCount();
+        int expectedRuns = 4;
+ 
+        assertEquals(expectedRuns, actualRuns); 
+    }
+
 }
