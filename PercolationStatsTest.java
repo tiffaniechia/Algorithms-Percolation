@@ -13,11 +13,9 @@ public class PercolationStatsTest {
     @Test
     public void shouldRunOnlyUntilPercolates() {
         int actualRuns = percolationStats.runCount();
-        int expectedRuns = 4;
- 
+        int expectedRuns = 4; 
+        
         assertEquals(expectedRuns, actualRuns); 
     }
-    
-    
 
 }

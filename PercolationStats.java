@@ -3,13 +3,14 @@ import java.util.Random;
 public class PercolationStats {
     Random rand = new Random();
     Percolation percolation;
-    public int runCount = 0;
+    public int runCount;
     public int randomRow;
     public int randomCol;
     public int gridSize;
     public int openSquares;
-    public int sumOfThresholds = 0;
+    public int sumOfThresholds;
     public int[] thresholdArray;
+    double sumOfDifferenceSquared;
         
     public PercolationStats(int N, int T) {
         percolation = new Percolation(N);
@@ -20,8 +21,10 @@ public class PercolationStats {
             while(!percolation.percolates()) {
                 randomRow = rand.nextInt(N);
                 randomCol = rand.nextInt(N);
-                percolation.open(randomRow,randomCol);
-                openSquares++;
+                if(!percolation.isOpen(randomRow,randomCol)){
+                    percolation.open(randomRow,randomCol);
+                    openSquares++;
+                }
             }
             thresholdArray[i] = openSquares/gridSize;
             sumOfThresholds += openSquares/gridSize;
@@ -35,9 +38,9 @@ public class PercolationStats {
     
     public double mean() {
         return sumOfThresholds/runCount;    
-    }                     
+    }
+    
     public double stddev() {
-        double sumOfDifferenceSquared = 0;
         for(int i= 0; i< runCount; i++) {
            double difference = thresholdArray[i] - mean(); 
            sumOfDifferenceSquared += difference*difference;    
@@ -45,8 +48,14 @@ public class PercolationStats {
         double variance = sumOfDifferenceSquared/runCount;
         double stdDev = Math.sqrt(variance);
         return stdDev;
-    }                    
-//   public double confidenceLo()              
-//   public double confidenceHi()              
+    }
+    
+    public double confidenceLo() {
+        return mean() - ((1.96*stddev())/Math.sqrt(runCount()));    
+    }             
+
+    public double confidenceHi() {
+        return mean() + ((1.96*stddev())/Math.sqrt(runCount()));
+    }             
    
 }
